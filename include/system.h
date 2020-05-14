@@ -34,6 +34,8 @@ class System {
   vector<Process> processes_ = {};
   string kernel_;
   string operatingSystem_;
+  int totalProcesses;
+  int runningProcesses;
 };
 
 #endif

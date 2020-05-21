@@ -19,7 +19,7 @@ class System {
     operatingSystem_ = LinuxParser::OperatingSystem();
   }
 
-  Processor& Cpu();                   // TODO: See src/system.cpp
+  Processor& Cpu();              // TODO: See src/system.cpp
   vector<Process>& Processes();  // TODO: See src/system.cpp
   float MemoryUtilization();
   long UpTime();

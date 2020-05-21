@@ -1,5 +1,4 @@
 #include <dirent.h>
-#include <unistd.h>
 #include <string>
 #include <vector>
 
@@ -89,8 +88,22 @@ float LinuxParser::MemoryUtilization() {
   return used / total;
 }
 
-// TODO: Read and return the system uptime
-long LinuxParser::UpTime() { return 0; }
+long LinuxParser::UpTime() {
+  string uptime, idle;
+  string line;
+  std::ifstream stream(kProcDirectory + kUptimeFilename);
+  if (stream.is_open()) {
+    std::getline(stream, line);
+    std::istringstream linestream(line);
+    linestream >> uptime >> idle;
+  }
+
+
+  std::string::size_type sz;
+
+  return std::stol(uptime) ;//+ std::stol(idle, &sz);
+  // return long(result);
+ }
 
 // TODO: Read and return the number of jiffies for the system
 long LinuxParser::Jiffies() { return 0; }
